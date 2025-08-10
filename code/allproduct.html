@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<?php session_start(); ?>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="view" content="width=device-width, initial-scale=1.0"/>
+    <title>All Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="Allproduct.css"/>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<!--    <?php session_start(); ?>-->
+    <div class="top-navbar">
+        <div class="left">
+            <a href="home.html" class="nav-link">
+                <i class="fa-solid fa-street-view"></i>
+                <span class="logo">R's</span>
+            </a>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search products by name">
+                <button onclick="searchProduct()"><i class="fa-solid fa-magnifying-glass"></i> </button>
+            </div>
+        </div>
+        <div class="right">
+
+            <div id="user-area">
+
+                <a href='javascript:void(0)' class="nav-link" onclick="openModal('login')">
+                    <i class="fa-solid fa-user"></i> Login / Sign up </a>
+            </div>
+            <a href="#" class="nav-link"><i class="fa-solid fa-clipboard-list"></i> Lists</a>
+            <div class="cart">
+                <a href="javascript:void(0)"  onclick="openModal('cartModal')">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-total">$0.00</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <h1>All Products</h1>
+<!--    <div class="product-grid">-->
+<!--        <div class="product-info">-->
+<!--            <img src="https://via.placeholder.com/220x180?text=Apple" class="product-image" alt="Apple" />-->
+<!--            <div class="product-text">-->
+<!--                <div class="product-name">Gala Apple</div>-->
+<!--                <div class="product-price"> $3.9 / kg</div>-->
+<!--                <button><i class="fa fa-cart-plus"></i> Add to Cart</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="product-info">-->
+<!--            <img src="https://via.placeholder.com/220x180?text=Apple" class="product-image" alt="Apple" />-->
+<!--            <div class="product-text">-->
+<!--                <div class="product-name">Gala Apple</div>-->
+<!--                <div class="product-price"> $3.9 / kg</div>-->
+<!--                <button><i class="fa fa-cart-plus"></i> Add to Cart</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="product-info">-->
+<!--            <img src="https://via.placeholder.com/220x180?text=Apple" class="product-image" alt="Apple" />-->
+<!--            <div class="product-text">-->
+<!--                <div class="product-name">Gala Apple</div>-->
+<!--                <div class="product-price"> $3.9 / kg</div>-->
+<!--                <button><i class="fa fa-cart-plus"></i> Add to Cart</button>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--    </div>-->
+    <div id="banner-section"></div>
+    <div id="product-container" class="product-grid"></div>
+    <div id="pagination" class="pagination"></div>
+    <div id="login" class="pop-up">
+        <div class="pop-up_content">
+            <span class="close-button" onclick="closeModal('login')">&times;</span>
+            <h2>Login / Sign up</h2>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <input type="email" id="email" placeholder="email">
+            <button class="pop-up-button" onclick="login()">Login </button>
+            <button class="pop-up-button" onclick="signup()">Sign Up</button>
+        </div>
+
+    </div>
+    <div id="cartModal" class="pop-up">
+        <div class="pop-up_content">
+            <span class="close-button" onclick="closeModal('cartModal')">&times;</span>
+            <h2>Your cart</h2>
+            <p>No items in cart.</p>
+            <button class="pop-up-button">Checkout</button>
+
+        </div>
+    </div>
+<div id="orderModal" class="pop-up">
+    <div class="pop-up_content">
+        <span class="close-button" onclick="closeModal('orderModal')">&times;</span>
+        <h2 style="margin-bottom: 20px;">delivery information</h2>
+        <form id="orderForm">
+            <input type="text" id="receiptName" placeholder="ReceiptName" required>
+            <input type="text" id="street" placeholder="Street" required>
+            <input type="text" id="city" placeholder="City" required>
+            <select id="state" required>
+                <option value="">select state</option>
+                <option>NSW</option>
+                <option>VIC</option>
+                <option>QLD</option>
+                <option>WA</option>
+                <option>SA</option>
+                <option>TAS</option>
+                <option>ACT</option>
+                <option>NT</option>
+                <option>Others</option>
+            </select>
+            <input type="tel" id="phone" placeholder="Phone" required>
+            <input type="email" id="orderEmail" placeholder="Email" required>
+            <button type="submit" class="pop-up-button">Submit order</button>
+        </form>
+    </div>
+
+</div>
+
+    <script src="script.js"></script>
+    <script src="login_signup.js"></script>
+    <script src="cart.js"></script>
+    <script src="load_products.js"></script>
+</body>
+
+</html>

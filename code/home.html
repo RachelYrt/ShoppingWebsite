@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>homepage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="Allproduct.css"/>
+<body>
+<!--  <?php session_start(); ?>-->
+<!--top navbar-->
+  <div class="top-navbar">
+    <div class="left">
+      <a href="home.html" class="nav-link" >
+          <i class="fa-solid fa-street-view"></i>
+          <span class="logo">R's</span>
+      </a>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search products by name">
+        <button onclick="searchProduct()"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+    </div>
+    <div class="right">
+
+
+        <div id="user-area">
+
+            <a href='javascript:void(0)' class="nav-link" onclick="openModal('login')">
+                <i class="fa-solid fa-user"></i> Login / Sign up </a>
+        </div>
+        <a href="#" class="nav-link"><i class="fa-solid fa-clipboard-list"></i> Lists</a>
+        <div class="cart">
+            <a href="javascript:void(0)"  onclick="openModal('cartModal')">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-total">$0.00</span>
+            </a>
+        </div>
+
+    </div>
+
+  </div>
+<!--second line navbar-->
+  <div class="second-navbar">
+<!--    <a href="#home">Home</a>-->
+    <a href="allproduct.html"><i class="fa-solid fa-bottle-water"></i>All Products</a>
+    <div class="subnav">
+      <button> Catalogues <i class="fa fa-caret-down"></i></button>
+      <div class="subnav-content">
+        <a href="javascript:void(0)" onclick="loadCategory('all')">All</a>
+        <a href="javascript:void(0)" onclick="loadCategory('meat')">Meat</a>
+        <a href="javascript:void(0)" onclick="loadCategory('vegetable')">Vegetable</a>
+        <a href="javascript:void(0)" onclick="loadCategory('fruit')">Fruit</a>
+        <a href="javascript:void(0)" onclick="loadCategory('snack')">Snacks</a>
+        <a href="javascript:void(0)" onclick="loadCategory('daily')">Daily</a>
+        <a href="javascript:void(0)" onclick="loadCategory('pet')">Pet</a>
+      </div>
+    </div>
+    <div class="subnav">
+      <button>Services <i class="fa fa-caret-down"></i></button>
+      <div class="subnav-content">
+        <a href="javascript:void(0)" onclick="openCollectionModalWithCheck()">Collection</a>
+        <a href="javascript:void(0)" onclick="openOrderModalWithCheck()">Delivery</a>
+      </div>
+    </div>
+
+    <a href="#contact">Contact</a>
+  </div>
+  <div id="login" class="pop-up">
+      <div class="pop-up_content">
+          <span class="close-button" onclick="closeModal('login')">&times;</span>
+          <h2>Login / Sign up</h2>
+          <input type="text" id="username" placeholder="Username">
+          <input type="password" id="password" placeholder="Password">
+          <input type="email" id="email" placeholder="email">
+          <button class="pop-up-button" onclick="login()">Login </button>
+          <button class="pop-up-button" onclick="signup()">Sign Up</button>
+      </div>
+
+  </div>
+  <div id="cartModal" class="pop-up">
+      <div class="pop-up_content">
+          <span class="close-button" onclick="closeModal('cartModal')">&times;</span>
+          <h2>Your cart</h2>
+          <p>No items in cart.</p>
+          <button class="pop-up-button">Checkout</button>
+
+      </div>
+  </div>
+
+<!--  input delivery info-->
+  <div id="orderModal" class="pop-up">
+      <div class="pop-up_content">
+          <span class="close-button" onclick="closeModal('orderModal')">&times;</span>
+          <h2 style="margin-bottom: 20px;">delivery information</h2>
+          <form id="orderForm">
+              <input type="text" id="receiptName" placeholder="ReceiptName" required>
+              <input type="text" id="street" placeholder="Street" required>
+              <input type="text" id="city" placeholder="City" required>
+              <select id="state" required>
+                  <option value="">select state</option>
+                  <option>NSW</option>
+                  <option>VIC</option>
+                  <option>QLD</option>
+                  <option>WA</option>
+                  <option>SA</option>
+                  <option>TAS</option>
+                  <option>ACT</option>
+                  <option>NT</option>
+                  <option>Others</option>
+              </select>
+              <input type="tel" id="phone" placeholder="Phone" required>
+              <input type="email" id="orderEmail" placeholder="Email" required>
+              <button type="submit" class="pop-up-button">Submit order</button>
+          </form>
+      </div>
+
+  </div>
+<!--  input collection info-->
+<div id="collectionModal" class="pop-up">
+    <div class="pop-up_content">
+        <span class="close-button" onclick="closeModal('collectionModal')">&times;</span>
+        <h2 style="margin-bottom: 20px;">Collection Information</h2>
+        <form id="collectionForm">
+            <input type="text" id="collectName" placeholder="Your Name" required>
+            <select id="store" required>
+                <option value="">Select Store</option>
+                <option>Sydney CBD Store</option>
+                <option>Melbourne Central Store</option>
+                <option>Brisbane Mall Store</option>
+                <option>Adelaide City Store</option>
+            </select>
+            <input type="tel" id="collectPhone" placeholder="Phone" required>
+            <input type="email" id="collectEmail" placeholder="Email" required>
+            <button type="submit" class="pop-up-button">Submit Collection</button>
+        </form>
+    </div>
+</div>
+  <div style="padding: 30px; text-align: center">
+    <h1> Welcome to R's </h1>
+  </div>
+  <div class="image-section" id="banner-section">
+      <img src="img/banner/1.png" alt="image 1">
+      <img src="img/banner/2.png" alt="image 2">
+      <img src="img/banner/3.png" alt="image 3">
+  </div>
+  <div id="product-container" class="product-grid" style="display: none;"></div>
+  <div id="pagination" class="pagination" style="display: none;"></div>
+
+
+
+</body>
+<script src="script.js"> </script>
+<script src="login_signup.js"></script>
+<script src="load_products.js"></script>
+<script src="cart.js"></script>
+</html>
